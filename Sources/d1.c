@@ -1,20 +1,39 @@
 #include "../Includes/aoc.h"
 #include <stdlib.h>
 
-int biggest_value(int *calorie_amount)
+int *biggest_values(int *cal)
 {
 	int i;
-	int biggest;
+	int *big;
 
-	i = 0;
-	biggest = 0;
-	while (calorie_amount[i])
+	big = (int *)malloc(4 * sizeof(int));
+	if (!big)
 	{
-		if (calorie_amount[i] > biggest)
-			biggest = calorie_amount[i];
+		printf("malloc for big in biggest_values() failed\n");
+		return (0);
+	}
+	i = 0;
+	while (i < 3)
+		big[i++] = 0;
+	i = 0;
+	while (cal[i])
+	{
+		if (cal[i] > big[0])
+		{
+			big[2] = big[1];
+			big[1] = big[0];
+			big[0] = cal[i];
+		}
+		else if (cal[i] > big[1])
+		{
+			big[2] = big[1];
+			big[1] = cal[i];
+		}
+		else if (cal[i] > big[2])
+			big[2] = cal[i];
 		i++;
 	}
-	return (biggest);
+	return (big);
 }
 
 int total_power(int fd)
@@ -56,6 +75,7 @@ int main()
 	int fd2;
 	char *line;
 	int elf_amount;
+	int *big;
 	int *calorie_amount;
 	int i;
 
@@ -64,14 +84,29 @@ int main()
 	i = 0;
 	elf_amount = search_empty_lines(fd1);
 	calorie_amount = (int *)malloc((elf_amount + 1) * sizeof(int));
+	if (!calorie_amount)
+	{
+		printf("malloc for calorie_amount in main() failed\n");
+		return (0);
+	}
 	calorie_amount[elf_amount] = '\0';
 	while (i < elf_amount)
 	{
 		calorie_amount[i] = total_power(fd2);
 		i++;
 	}
-	i = biggest_value(calorie_amount);
-	printf("Biggest calorie amount = %d\n", i);
+	big = (int *)malloc(4 * sizeof(int));
+	if (!big)
+	{
+		printf("malloc for big in main() failed\n");
+		return (0);
+	}
+	big[3] = 0;
+	big = biggest_values(calorie_amount);
+	printf("Biggest calorie amount = %d\n", big[0]);
+	printf("Second biggest calorie amount = %d\n", big[1]);
+	printf("Third biggest calorie amount = %d\n", big[2]);
+	printf("Total calorie amount = %d\n", (big[0] + big[1] + big[2]));
 	close(fd1);
 	close(fd2);
 	return (0);
