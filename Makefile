@@ -8,13 +8,12 @@ run:
 	@./a.out
 
 11: fclean
-	@gcc -g $(HEADER) $(UTILS) Sources/d1_1.c
-	@echo "Compiled 'Day 1, Exercise 1'!"
+	@gcc -g $(HEADER) $(UTILS) Sources/d1.c
+	@echo "Compiled 'Day 1, Exercise 1 and 2'!"
 	@./a.out
 
 21:
-	@gcc -I $(HEADERS) -c Sources/d2_1.c -o $(EXE)
-	@ar rcs $(NAME) $(OBJECTS)
+	@gcc -g $(HEADER) $(UTILS) Sources/d2.c
 	@echo "Compiled 'Day 2, Exercise 1'!"
 	@./a.out
 

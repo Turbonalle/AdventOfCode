@@ -79,8 +79,8 @@ int main()
 	int *calorie_amount;
 	int i;
 
-	fd1 = open("InputFiles/input_d1_e1.txt", O_RDONLY | S_IRUSR);
-	fd2 = open("InputFiles/input_d1_e1.txt", O_RDONLY | S_IRUSR);
+	fd1 = open("InputFiles/i1.txt", O_RDONLY | S_IRUSR);
+	fd2 = open("InputFiles/i1.txt", O_RDONLY | S_IRUSR);
 	i = 0;
 	elf_amount = search_empty_lines(fd1);
 	calorie_amount = (int *)malloc((elf_amount + 1) * sizeof(int));
