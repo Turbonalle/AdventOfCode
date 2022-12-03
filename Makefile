@@ -32,7 +32,7 @@ run:
 	@./a.out
 
 3e2:
-	@gcc -g $(HEADER) $(UTILS) Programs/d3e2.c Libft/ft_substr.c
+	@gcc -g $(HEADER) $(UTILS) Programs/d3e2.c
 	@echo "Compiled 'Day 3, Exercise 2'!"
 	@./a.out
 
