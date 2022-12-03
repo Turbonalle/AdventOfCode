@@ -4,22 +4,31 @@ HEADER = Includes/aoc.h
 UTILS = Utils/*.c
 OBJECTS = *.o
 
+A_LIBFT = libft.a
+H_LIBFT = Libft/libft.h
+S_LIBFT = Libft/*.c
+
 run:
 	@./a.out
 
 1: fclean
-	@gcc -g $(HEADER) $(UTILS) Sources/d1.c
+	@gcc -g $(HEADER) $(UTILS) Programs/d1.c
 	@echo "Compiled 'Day 1, Exercise 1 and 2'!"
 	@./a.out
 
 2e1:
-	@gcc -g $(HEADER) $(UTILS) Sources/d2e1.c
+	@gcc -g $(HEADER) $(UTILS) Programs/d2e1.c
 	@echo "Compiled 'Day 2, Exercise 1'!"
 	@./a.out
 
 2e2:
-	@gcc -g $(HEADER) $(UTILS) Sources/d2e2.c
+	@gcc -g $(HEADER) $(UTILS) Programs/d2e2.c
 	@echo "Compiled 'Day 2, Exercise 2'!"
+	@./a.out
+
+3:
+	@gcc -g $(HEADER) $(UTILS) Programs/d3.c Libft/ft_substr.c
+	@echo "Compiled 'Day 3'!"
 	@./a.out
 
 clean:
