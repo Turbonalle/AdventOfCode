@@ -26,9 +26,14 @@ run:
 	@echo "Compiled 'Day 2, Exercise 2'!"
 	@./a.out
 
-3:
-	@gcc -g $(HEADER) $(UTILS) Programs/d3.c Libft/ft_substr.c
-	@echo "Compiled 'Day 3'!"
+3e1:
+	@gcc -g $(HEADER) $(UTILS) Programs/d3e1.c Libft/ft_substr.c
+	@echo "Compiled 'Day 3, Exercise 1'!"
+	@./a.out
+
+3e2:
+	@gcc -g $(HEADER) $(UTILS) Programs/d3e2.c Libft/ft_substr.c
+	@echo "Compiled 'Day 3, Exercise 2'!"
 	@./a.out
 
 clean:

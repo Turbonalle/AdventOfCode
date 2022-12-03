@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int test(char *line, int i)
+int find_priority(char *line)
 {
 	int len;
 	int value;
@@ -23,17 +23,16 @@ int main()
 {
 	int fd;
 	int priority_sum;
+	int badge_sum;
 	char *line;
-	int i = 1;
 
 	fd = open("InputFiles/i3.txt", O_RDONLY);
 	priority_sum = 0;
 	line  = get_next_line(fd);
 	while (line != NULL)
 	{
-		priority_sum += test(line, i);
+		priority_sum += find_priority(line);
 		line = get_next_line(fd);
-		i++;
 	}
 	printf("priority_sum = %d\n", priority_sum);
 	return (0);
