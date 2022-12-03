@@ -28,20 +28,12 @@ Formula for calculating your choice:
 
 int main()
 {
-	int fd;
-	int points;
+	int fd = open("InputFiles/i2.txt", O_RDONLY);
+	int points = 0;
 	char *line;
-	
-	fd = open("InputFiles/i2.txt", O_RDONLY);
-	if (fd < 3)
-		return (1);
-	points = 0;
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
+
+	while ((line = get_next_line(fd)) != NULL)
 		points += ((line[2] - 88) * 3) + ((((line[2] + 2) % 3) + (line[0] % 3)) % 3) + 1;
-		line = get_next_line(fd);
-	}
 	printf("final points = %d\n", points);
 	return (0);
 }
