@@ -29,14 +29,12 @@ int result(int you, int opponent)
 
 	points = 0;
 	result = you - opponent;
-	//printf("r = %d\n", result);
 	if (result == 22 || result == 25)
 		points = 0;
 	else if (result == 23)
 		points = 3;
 	else if (result == 21 || result == 24)
 		points = 6;
-	//printf("p = %d\n", points);
 	return (points);
 }
 
@@ -51,7 +49,6 @@ int rps(char *line)
 		points += 2 + result(line[2], line[0]);
 	else if (line[2] == 'Z')
 		points += 3 + result(line[2], line[0]);
-	//printf("%d\n", points);
 	return (points);
 }
 
@@ -62,22 +59,14 @@ int main()
 	char *line;
 	
 	fd = open("InputFiles/i2.txt", O_RDONLY);
-	printf("%d", fd);
 	if (fd < 3)
 		return (1);
 	points = 0;
 	line = get_next_line(fd);
-	printf("%s", line);
-	int i = 1;
-	int x = 0;
 	while (line != NULL)
 	{
-		x = rps(line);
-		points += x;
-		printf("points[%d] + %d = %d\n", i, x, points);
+		points += rps(line);
 		line = get_next_line(fd);
-		//printf("%s", line);
-		i++;
 	}
 	printf("final points = %d\n", points);
 	return (0);

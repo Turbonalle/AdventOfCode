@@ -7,14 +7,19 @@ OBJECTS = *.o
 run:
 	@./a.out
 
-11: fclean
+1: fclean
 	@gcc -g $(HEADER) $(UTILS) Sources/d1.c
 	@echo "Compiled 'Day 1, Exercise 1 and 2'!"
 	@./a.out
 
-21:
-	@gcc -g $(HEADER) $(UTILS) Sources/d2.c
+2e1:
+	@gcc -g $(HEADER) $(UTILS) Sources/d2e1.c
 	@echo "Compiled 'Day 2, Exercise 1'!"
+	@./a.out
+
+2e2:
+	@gcc -g $(HEADER) $(UTILS) Sources/d2e2.c
+	@echo "Compiled 'Day 2, Exercise 2'!"
 	@./a.out
 
 clean:
