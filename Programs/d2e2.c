@@ -20,10 +20,10 @@ C Y = scissors 	scissors	= 3 + 3 = 6		22
 C Z = scissors 	rock 		= 1 + 6 = 7		23
 
 Formula for winning, getting a draw or losing:
-	(Condition - 88) % 3;
+	(Condition - 88) * 3;
 
 Formula for calculating your choice:
-	((((Condition + 2) % 3) + (Opponent % 3)) % 3) + 1;
+	((Condition + 2) % 3 + Opponent % 3) % 3 + 1;
 */
 
 int main()
@@ -33,7 +33,7 @@ int main()
 	char *line;
 
 	while ((line = get_next_line(fd)) != NULL)
-		points += ((line[2] - 88) * 3) + ((((line[2] + 2) % 3) + (line[0] % 3)) % 3) + 1;
+		points += (line[2] - 88) * 3 + ((line[2] + 2) % 3 + line[0] % 3) % 3 + 1;
 	printf("final points = %d\n", points);
 	return (0);
 }
