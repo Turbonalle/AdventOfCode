@@ -23,17 +23,16 @@ int main()
 {
 	int fd;
 	int priority_sum;
-	int badge_sum;
 	char *line;
 
 	fd = open("InputFiles/i3.txt", O_RDONLY);
 	priority_sum = 0;
-	line  = get_next_line(fd);
-	while (line != NULL)
+	while ((line = get_next_line(fd)) != NULL)
 	{
 		priority_sum += find_priority(line);
-		line = get_next_line(fd);
+		free(line);
 	}
+	close(fd);
 	printf("priority_sum = %d\n", priority_sum);
 	return (0);
 }

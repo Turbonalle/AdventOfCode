@@ -69,5 +69,6 @@ int main()
 		line = get_next_line(fd);
 	}
 	printf("final points = %d\n", points);
+	close(fd);
 	return (0);
 }

@@ -34,29 +34,23 @@ int find_badge(char *line1, char *line2, char *line3)
 int main()
 {
 	int fd;
-	int badge_sum;
 	int badge;
+	int badge_sum;
 	char *line1;
 	char *line2;
 	char *line3;
-	int i = 1;
-	int value;
 
 	fd = open("InputFiles/i3.txt", O_RDONLY);
 	badge_sum = 0;
-	line1 = get_next_line(fd);
-	line2 = get_next_line(fd);
-	line3 = get_next_line(fd);
-	while (line1 != NULL && line2 != NULL && line3 != NULL)
+	while ((line1 = get_next_line(fd)) != NULL && (line2 = get_next_line(fd)) != NULL && (line3 = get_next_line(fd)) != NULL)
 	{
 		badge = find_badge(line1, line2, line3);
-		value = count_value(badge);
 		badge_sum += count_value(badge);
-		line1 = get_next_line(fd);
-		line2 = get_next_line(fd);
-		line3 = get_next_line(fd);
-		i++;
+		free(line1);
+		free(line2);
+		free(line3);
 	}
+	close(fd);
 	printf("badge_sum = %d\n", badge_sum);
 	return (0);
 }

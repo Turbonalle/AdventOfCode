@@ -33,7 +33,10 @@ int main()
 	char *line;
 
 	while ((line = get_next_line(fd)) != NULL)
+	{
 		points += (line[2] - 88) * 3 + ((line[2] + 2) % 3 + line[0] % 3) % 3 + 1;
+		free(line);
+	}
 	printf("final points = %d\n", points);
 	return (0);
 }

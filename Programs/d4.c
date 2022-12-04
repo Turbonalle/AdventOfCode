@@ -46,9 +46,10 @@ int main()
 			f++;
 		if (!(arr[1] < arr[2] || arr[3] < arr[0]))
 			o++;
+		free(line);
 	}
+	close(fd);
 	printf("Fully overlapping pairs = %d\n", f);
 	printf("Overlapping pairs = %d\n", o);
-	close(fd);
 	return (0);
 }

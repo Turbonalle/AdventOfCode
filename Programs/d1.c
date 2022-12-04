@@ -103,11 +103,11 @@ int main()
 	}
 	big[3] = 0;
 	big = biggest_values(calorie_amount);
+	close(fd1);
+	close(fd2);
 	printf("Biggest calorie amount = %d\n", big[0]);
 	printf("Second biggest calorie amount = %d\n", big[1]);
 	printf("Third biggest calorie amount = %d\n", big[2]);
 	printf("Total calorie amount = %d\n", (big[0] + big[1] + big[2]));
-	close(fd1);
-	close(fd2);
 	return (0);
 }
