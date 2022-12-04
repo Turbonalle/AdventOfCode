@@ -10,6 +10,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
+int		ft_isdigit(int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *str);

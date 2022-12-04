@@ -16,6 +16,9 @@ run:
 	@echo "Compiled 'Day 1, Exercise 1 and 2'!"
 	@./a.out
 
+1e1: 1
+1e2: 1
+
 2e1:
 	@gcc -g $(HEADER) $(UTILS) Programs/d2e1.c
 	@echo "Compiled 'Day 2, Exercise 1'!"
@@ -35,6 +38,14 @@ run:
 	@gcc -g $(HEADER) $(UTILS) Programs/d3e2.c
 	@echo "Compiled 'Day 3, Exercise 2'!"
 	@./a.out
+
+4:
+	@gcc -g $(HEADER) $(UTILS) Programs/d4e1.c Libft/ft_isdigit.c
+	@echo "Compiled 'Day 4, Exercise 1 and 2'!"
+	@./a.out
+
+4e1: 4
+4e2: 4
 
 clean:
 	@/bin/rm -f $(OBJECTS)
