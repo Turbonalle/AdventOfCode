@@ -47,6 +47,11 @@ run:
 4e1: 4
 4e2: 4
 
+5:
+	@gcc -g $(HEADER) $(UTILS) Programs/d5.c Libft/ft_substr.c Libft/ft_isdigit.c
+	@echo "Compiled 'Day 5, Exercise 1'!"
+	@./a.out
+
 clean:
 	@/bin/rm -f $(OBJECTS)
 	@echo "Objects are gone!"
