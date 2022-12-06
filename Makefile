@@ -52,6 +52,14 @@ run:
 	@echo "Compiled 'Day 5, Exercise 1'!"
 	@./a.out
 
+6:
+	@gcc -g Includes/aoc.h Utils/*.c Programs/d6.c
+	@echo "Compiled 'Day 6, Exercise 1 and 2'!"
+	@./a.out
+
+6e1: 6
+6e2: 6
+
 clean:
 	@/bin/rm -f $(OBJECTS)
 	@echo "Objects are gone!"

@@ -47,12 +47,10 @@ int *get_instructions(char *line)
 		while (!ft_isdigit(*line))
 			line++;
 		instructions[n++] = atoi(line);
-		// printf("instructions[%d] = [%d]\n", n - 1, instructions[n - 1]);
 		while (ft_isdigit(*line))
 			line++;
 	}
 	instructions[n] = 0;
-	printf("instructions = {%d,%d,%d}\n", instructions[0], instructions[1], instructions[2]);
 	return (instructions);
 }
 
@@ -62,33 +60,59 @@ char **follow_instructions(char **stacks, int *instructions)
 	int from;
 	int to;
 	int stack_size;
-	char crate;
+	char *crate;
 	
 	reps = instructions[0];
 	from = instructions[1] - 1;
 	to = instructions[2] - 1;
-
-	printf("reps = %d	stacks[from] 	= '%s'\n", reps, stacks[from]);
-	printf("reps = %d	stacks[to] 	= '%s'\n", reps, stacks[to]);
+	crate = malloc(2 * sizeof(char));
+	if (!crate)
+	{
+		printf("Malloc failed!\n");
+		return (0);
+	}
+	crate[1] = '\0';
 	while (reps-- > 0)
 	{
-		stack_size = ft_strlen(stacks[from]) - 1;
-		crate = stacks[from][stack_size];
-		printf("crate = %c\n", crate);
-		stacks[from] = ft_substr(stacks[from], 0, stack_size);
-		stacks[to] = ft_strjoin(stacks[to], &crate);
-		printf("reps = %d	stacks[from] 	= '%s'\n", reps, stacks[from]);
-		printf("reps = %d	stacks[to] 	= '%s'\n", reps, stacks[to]);
+		stack_size = ft_strlen(stacks[from]);
+		crate[0] = stacks[from][stack_size - 1];
+		stacks[from] = ft_substr(stacks[from], 0, stack_size - 1);
+		stacks[to] = ft_strjoin(stacks[to], crate);
 	}
 	return (stacks);
 }
 
-// char *get_top_of_stacks(char **stacks)
-// {
-// 	char *top_of_stacks;
+char *get_top_of_stacks(char **stacks)
+{
+	char *top_of_stacks;
+	char *top_crate;
+	int stack_size;
+	int stack;
 
-// 	return (top_of_stacks);
-// }
+	top_of_stacks = malloc(10 * sizeof(char));
+	if (!top_of_stacks)
+	{
+		printf("Malloc failed!\n");
+		return (0);
+	}
+	top_of_stacks[9] = '\0';
+	top_crate = malloc(2 * sizeof(char));
+	if (!top_crate)
+	{
+		printf("Malloc failed!\n");
+		return (0);
+	}
+	top_crate[1] = '\0';
+	stack = 0;
+	while (stacks[stack])
+	{
+		stack_size = ft_strlen(stacks[stack]);
+		top_crate[0] = stacks[stack][stack_size - 1];
+		top_of_stacks = ft_strjoin(top_of_stacks, top_crate);
+		stack++;
+	}
+	return (top_of_stacks);
+}
 
 int main()
 {
@@ -107,16 +131,15 @@ int main()
 	skip_lines(fd);
 	int j;
 	int i = 0;
-	while ((line = get_next_line(fd)) != NULL && i++ < 20)
+	while ((line = get_next_line(fd)) != NULL)
 	{
-		printf("\nTASK [ %d ]-------------------------------------------\n", i);
 		instructions = get_instructions(line);
 		stacks = follow_instructions(stacks, instructions);
-		j = 0;
-		while (j++ < 9)
-			printf("stack[%d] = '%s'\n", j, stacks[j - 1]);
 	}
-	//line = get_top_of_stacks(stacks);
+	line = get_top_of_stacks(stacks);
+	printf("Top crates = [%s]\n", line);
 	close(fd);
 	return (0);
 }
+
+/*BRTSWNJHH*/
