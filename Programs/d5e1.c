@@ -19,7 +19,7 @@ char **get_stacks(char **stacks)
 		return (NULL);
 	}
 	stacks[0] = "DTWFJSHN";
-	stacks[1] = "HRPQTNGB";
+	stacks[1] = "HRPQTNBG";
 	stacks[2] = "LQV";
 	stacks[3] = "NBSWRQ";
 	stacks[4] = "NDFTVMB";
@@ -107,6 +107,7 @@ char *get_top_of_stacks(char **stacks)
 	while (stacks[stack])
 	{
 		stack_size = ft_strlen(stacks[stack]);
+		printf("\nstack_size[%d] = %d", stack + 1, stack_size);
 		top_crate[0] = stacks[stack][stack_size - 1];
 		top_of_stacks = ft_strjoin(top_of_stacks, top_crate);
 		stack++;
@@ -130,14 +131,25 @@ int main()
 	stacks = get_stacks(stacks);
 	skip_lines(fd);
 	int j;
-	int i = 0;
+	int k;
+	int i = 11;
 	while ((line = get_next_line(fd)) != NULL)
 	{
+		j = 0;
+		k = 0;
 		instructions = get_instructions(line);
 		stacks = follow_instructions(stacks, instructions);
+		if (i < 600)
+			printf("\nmove %d = {%d,%d,%d}\n", i, instructions[0], instructions[1], instructions[2]);
+		while (stacks[j] && i < 600)
+		{
+			printf("stacks[%d] = %s\n", j + 1, stacks[j]);
+			j++;
+		}
+		i++;
 	}
 	line = get_top_of_stacks(stacks);
-	printf("Top crates = [%s]\n", line);
+	printf("\nTop crates = [%s]\n", line);
 	close(fd);
 	return (0);
 }

@@ -40,16 +40,21 @@ run:
 	@./a.out
 
 4:
-	@gcc -g $(HEADER) $(UTILS) Programs/d4e1.c Libft/ft_isdigit.c
+	@gcc -g $(HEADER) $(UTILS) Programs/d4.c Libft/ft_isdigit.c
 	@echo "Compiled 'Day 4, Exercise 1 and 2'!"
 	@./a.out
 
 4e1: 4
 4e2: 4
 
-5:
-	@gcc -g $(HEADER) $(UTILS) Programs/d5.c Libft/ft_substr.c Libft/ft_isdigit.c
+5e1:
+	@gcc -g $(HEADER) $(UTILS) Programs/d5e1.c Libft/ft_substr.c Libft/ft_isdigit.c
 	@echo "Compiled 'Day 5, Exercise 1'!"
+	@./a.out
+
+5e2:
+	@gcc -g $(HEADER) $(UTILS) Programs/d5e2.c Libft/ft_substr.c Libft/ft_isdigit.c
+	@echo "Compiled 'Day 5, Exercise 2'!"
 	@./a.out
 
 6:
