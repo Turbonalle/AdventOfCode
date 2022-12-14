@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 int operation(int worry_level, int monkey)
 {
 	if (monkey == 0)
@@ -104,14 +107,22 @@ int **set_items(int **items)
 		printf("Malloc of 'items' failed!\n");
 		return (0);
 	}
-	items[0] = {84,66,62,69,88,91,91};
-	items[1] = {98,50,76,99};
-	items[2] = {72,56,94};
-	items[3] = {55,88,90,77,60,67};
-	items[4] = {69,72,63,60,72,52,63,78};
-	items[5] = {89,73};
-	items[6] = {78,68,98,88,66};
-	items[7] = {70};
+	int a0[7] = {84,66,62,69,88,91,91};
+	int a1[4] = {98,50,76,99};
+	int a2[3] = {72,56,94};
+	int a3[6] = {55,88,90,77,60,67};
+	int a4[8] = {69,72,63,60,72,52,63,78};
+	int a5[2] = {89,73};
+	int a6[5] = {78,68,98,88,66};
+	int a7[1] = {70};
+	items[0] = a0;
+	items[1] = a1;
+	items[2] = a2;
+	items[3] = a3;
+	items[4] = a4;
+	items[5] = a5;
+	items[6] = a6;
+	items[7] = a7;
 	items[8] = 0;
 	return (items);
 }
@@ -204,7 +215,7 @@ int count_monkey_business(int *inspect)
 	return (monkey_business);
 }
 
-check_monkey_business(int **items, int rounds)
+void check_monkey_business(int **items, int rounds)
 {
 	int *inspect;
 	int monkey;
